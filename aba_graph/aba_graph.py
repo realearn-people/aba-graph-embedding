@@ -27,30 +27,23 @@ class ABA_Graph:
 
     def load_json(self, json_data):
         """
-        Load a JSON document containing the framework elements 
+        Load a JSON document containing the framework elements.
         """
 
         data = json.loads(json_data) if isinstance(json_data, str) else json_data
-            
-        # Language loading
+        
         self.language = set(data.get('language', []))
-            
-        # Rules loading
-        self.rules = set()
-        for rule_data in data.get('rules', []):
-            head = rule_data['head']
-            body = set(rule_data.get('body', []))
-            self.rules.add(Rule(f'Rule_{len(self.rules)+1}', body, head))
-            
-        # Assumptions loading 
         self.assumptions = set(data.get('assumptions', []))
-            
-        # Contraries loading
         self.contraries = data.get('contraries', {})
 
-        return True
-    
+        self.rules = {
+            Rule(f'Rule_{i+1}', set(rule['body']), rule['head'])
+            for i, rule in enumerate(data.get('rules', []))
+        }
 
+        return True
+
+    
     def create_aba_framework(self):
         """
         Building an ABA framework
@@ -64,7 +57,7 @@ class ABA_Graph:
         """
         # ABA argument creation: generates all the arguments of the ABA framework
         # Support: set of assumptions used and conclusion: deduced formula
-        aba_arguments = self.aba_arguments(aba_framework)
+        aba_arguments = self.generate_arguments_from_framework(aba_framework)
         
         # Creation of abstract arguments
         abstract_arguments = []
@@ -90,7 +83,7 @@ class ABA_Graph:
         return AbstractArgumentationFramework('ABA_AF', abstract_arguments, defeats)
     
 
-    def aba_arguments(self, aba_framework):
+    def generate_arguments_from_framework(self, aba_framework):
         """
         Generates all possible arguments from the ABA framework.
         Each argument is represented as a tuple: (support, conclusion).
