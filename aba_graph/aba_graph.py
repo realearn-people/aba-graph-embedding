@@ -170,7 +170,7 @@ class ABA_Graph:
 
 
 if __name__ == "__main__":
-    path = "ex3_1.json"
+    path = "./json/ex3_1.json"
 
     with open(path, 'r') as f:
         aba = json.load(f)
