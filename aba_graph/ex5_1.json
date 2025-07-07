@@ -1,0 +1,30 @@
+{     
+    "language": [
+        "a",
+        "b",
+        "ca",
+        "cb"
+    ],
+    "rules": [
+        {
+            "head": "ca",
+            "body": ["a", "b"]
+        },
+        {
+            "head": "ca",
+            "body": ["b"]
+        },
+        {
+            "head": "cb",
+            "body": ["a"]
+        }
+    ],
+    "assumptions": [
+        "a",
+        "b"
+    ],
+    "contraries": {
+        "a": "ca",
+        "b": "cb"
+    }
+}

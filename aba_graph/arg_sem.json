@@ -1,0 +1,46 @@
+{     
+    "language": [
+        "a",
+        "b",
+        "c", 
+        "d", 
+        "ca",
+        "cb", 
+        "cc", 
+        "cd"
+    ],
+    "rules": [
+        {
+            "head": "cc",
+            "body": ["c"]
+        },
+        {
+            "head": "ca",
+            "body": ["b"]
+        },
+        {
+            "head": "cb",
+            "body": ["a"]
+        }, 
+        {
+            "head": "cc",
+            "body": ["c","a"]
+        }, 
+        {
+            "head": "cd",
+            "body": ["d","b"]
+        }
+    ],
+    "assumptions": [
+        "a",
+        "b", 
+        "c", 
+        "d"
+    ],
+    "contraries": {
+        "a": "ca",
+        "b": "cb", 
+        "c" : "cc", 
+        "d" : "cd"
+    }
+}

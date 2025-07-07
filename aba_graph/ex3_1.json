@@ -1,0 +1,36 @@
+{     
+    "language": [
+        "happy",
+        "eating",
+        "good_food",
+        "not_eating",
+        "no_fork",
+        "dirty_hands",
+        "fork",
+        "clean_hands"
+    ],
+    "rules": [
+        {
+            "head": "happy",
+            "body": ["good_food", "eating"]
+        },
+        {
+            "head": "good_food",
+            "body": []
+        },
+        {
+            "head": "not_eating",
+            "body": ["no_fork", "dirty_hands"]
+        }
+    ],
+    "assumptions": [
+        "eating",
+        "no_fork",
+        "dirty_hands"
+    ],
+    "contraries": {
+        "eating": "not_eating",
+        "no_fork": "fork",
+        "dirty_hands": "clean_hands"
+    }
+}
